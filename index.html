@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여친 전용 남친 힐링 공단 ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap');
+
+:root {
+  --bg:#14121a;
+  --card:#201c2b;
+  --pink:#ff6b9d;
+  --yellow:#ffd166;
+  --white:#fff5f8;
+  --muted:#b3a6b8;
+}
+
+*{box-sizing:border-box}
+
+body {
+  margin:0;
+  background:
+    radial-gradient(circle at 10% 10%,#4a223e 0,transparent 40%),
+    radial-gradient(circle at 90% 85%,#232b4a 0,transparent 40%),
+    var(--bg);
+  color:var(--white);
+  font-family:'Gowun Dodum',sans-serif;
+  min-height:100vh;
+  padding:25px 16px 60px;
+}
+
+.wrap{max-width:760px;margin:auto}
+
+header{text-align:center;padding:30px 0 22px}
+
+.tag {
+  display:inline-block;
+  border:1px solid #ff6b9d66;
+  color:var(--pink);
+  padding:7px 16px;
+  border-radius:30px;
+  font-size:12px;
+  letter-spacing:1px;
+  background:#ff6b9d11;
+}
+
+h1 {
+  font-family:'Jua',sans-serif;
+  font-size:clamp(32px,7.5vw,52px);
+  line-height:1.2;
+  margin:22px 0 10px;
+}
+
+h1 span{color:var(--pink)}
+
+.sub{color:var(--muted);font-size:14px;line-height:1.8}
+
+.card {
+  background:linear-gradient(145deg,#252033,#1b1724);
+  border:1px solid #ffffff14;
+  border-radius:24px;
+  padding:24px;
+  margin:18px 0;
+  box-shadow:0 15px 40px #0004;
+}
+
+.card-title {
+  font-family:'Jua';
+  font-size:20px;
+  margin-bottom:16px;
+  color:#fff;
+}
+
+.status {
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:9px;
+}
+
+.bar {
+  height:13px;
+  background:#352e47;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:20px;
+}
+
+.fill {
+  height:100%;
+  border-radius:20px;
+  transition:width .8s;
+}
+
+.pink{background:linear-gradient(90deg,#ff6b9d,#ff9ec0)}
+.yellow{background:linear-gradient(90deg,#ffd166,#ffe89e)}
+
+.big-number {
+  font-family:'Jua';
+  font-size:40px;
+  color:var(--pink);
+}
+
+button {
+  border:0;
+  cursor:pointer;
+  border-radius:16px;
+  padding:15px 18px;
+  font-family:'Jua';
+  font-size:16px;
+  transition:.2s;
+}
+
+button:hover{transform:translateY(-3px);filter:brightness(1.15)}
+button:active{transform:scale(.97)}
+
+.primary {
+  background:linear-gradient(135deg,#ff6b9d,#ff9ec0);
+  color:#24121d;
+  width:100%;
+  box-shadow:0 8px 20px #ff6b9d33;
+}
+
+.secondary {
+  background:#342c47;
+  color:white;
+  width:100%;
+  border:1px solid #ffffff18;
+}
+
+.yellow-btn {
+  background:var(--yellow);
+  color:#332910;
+  width:100%;
+  box-shadow:0 8px 20px #ffd16633;
+}
+
+.result {
+  background:#171421;
+  border:1px dashed #ff6b9d66;
+  padding:20px;
+  border-radius:16px;
+  margin-top:15px;
+  line-height:1.9;
+  min-height:85px;
+  white-space:pre-line;
+  font-size:14px;
+}
+
+.hidden{display:none}
+
+.stamp {
+  font-family:'Jua';
+  color:#ff6b9d;
+  border:3px solid #ff6b9d;
+  display:inline-block;
+  padding:8px 18px;
+  transform:rotate(-6deg);
+  font-size:22px;
+  margin:15px 0;
+  border-radius:8px;
+  background:#ff6b9d12;
+}
+
+.chat {
+  background:#2d263d;
+  border-radius:18px 18px 18px 4px;
+  padding:18px;
+  line-height:1.8;
+  margin:15px 0;
+  font-size:14px;
+  border-left:4px solid var(--pink);
+}
+
+.chat b{color:var(--yellow)}
+
+.center{text-align:center}
+
+footer {
+  text-align:center;
+  color:#8a7c91;
+  font-size:12px;
+  line-height:2;
+  padding:25px 0;
+}
+
+.emoji{font-size:40px;margin:10px}
+
+#toast {
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#ff6b9d;
+  color:#24121d;
+  font-family:'Jua';
+  padding:14px 22px;
+  border-radius:30px;
+  opacity:0;
+  transition:.3s;
+  pointer-events:none;
+  z-index:5;
+  box-shadow:0 10px 30px #ff6b9d55;
+}
+
+#toast.show{opacity:1}
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <div class="tag">OFFICIAL BOYFRIEND CARE CENTER ❤️</div>
+  <h1>오늘도 고생했어<br><span>남친 전용 힐링공단</span> 💌</h1>
+  <div class="sub">
+    여친의 지친 마음, 스트레스, 투정까지 모두 받아주는<br>
+    세상에서 제일 든든하고 다정한 남자친구 버전 페이지입니다.
+  </div>
+</header>
+
+<div class="card">
+  <div class="card-title">📊 여친 현재 상태 실시간 모니터링</div>
+
+  <div class="status">
+    <span>오늘 나(남친) 보고 싶은 지수</span><span id="missText">MAX / 100</span>
+  </div>
+  <div class="bar"><div class="fill pink" style="width:100%"></div></div>
+
+  <div class="status">
+    <span>당충전 및 맛있는 거 먹고 싶은 욕구</span><span id="foodText">98 / 100</span>
+  </div>
+  <div class="bar"><div class="fill yellow" style="width:98%"></div></div>
+
+  <div class="status">
+    <span>귀여움 / 사랑스러움</span><span style="color:var(--pink)">∞ (무한대)</span>
+  </div>
+  <div class="bar"><div class="fill pink" style="width:100%"></div></div>
+
+  <div class="center">
+    <div class="emoji">🥰</div>
+    <div id="diagnosis">진단 결과: 지금 당장 꼭 껴안아 주고 칭찬해 줘야 하는 상태입니다.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">💬 남친의 심쿵 대사 뽑기</div>
+  <p style="color:var(--muted);font-size:14px;line-height:1.8">
+    힘들 때 들으면 사르르 녹아버리는 남친의 특급 멘트를 처방해 드립니다.
+  </p>
+  <button class="primary" onclick="randomSweetWord()">
+    남친 목소리(대사) 재생하기 💕
+  </button>
+  <div id="sweetResult" class="result hidden"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚨 남친 특급 서비스 신청서</div>
+  <div class="chat">
+    <b>남친봇 :</b> 오늘 하루 누구보다 고생한 우리 여보! 아래 버튼 중 필요한 서비스를 골라봐. 다 해줄게!
+  </div>
+  <button class="yellow-btn" onclick="requestService('massage')">
+    💆 머리 쓰다듬기 및 어깨 마사지권 신청
+  </button>
+  <div style="height:10px"></div>
+  <button class="secondary" onclick="requestService('listen')">
+    🗣️ "오늘 짜증났던 일" 2시간 동안 묵묵히 들어주기
+  </button>
+  <div id="serviceResult" class="result hidden"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">📜 남친의 무조건 사과 및 애교 생성기</div>
+  <p style="font-size:13px;color:var(--muted)">
+    이유 불문하고 일단 내가 무조건 잘못했을 때 사용하는 즉석 사과문입니다.
+  </p>
+  <button class="yellow-btn" onclick="generateApology()">
+    무조건 무릎 꿇고 사과하기 🙇‍♂️
+  </button>
+  <div id="apologyResult" class="result hidden"></div>
+</div>
+
+<div class="card center">
+  <div class="card-title">💖 오늘의 사랑 적립 통장</div>
+  <div class="big-number" id="heartCount">1,004,000개</div>
+  <p style="font-size:12px;color:var(--muted)">
+    ※ 이 통장은 매일 이자로 사랑이 2배씩 복리 복사됩니다.
+  </p>
+  <button class="primary" onclick="addHeart()">
+    사랑 듬뿍 입금하기 ❤️
+  </button>
+</div>
+
+<div class="card">
+  <div class="card-title">🚨 긴급 남친 소환 버튼</div>
+  <p style="color:var(--muted);font-size:13px;line-height:1.8">
+    지금 당장 남친 얼굴이 보이고 싶거나 품에 안기고 싶을 때 누르세요.
+  </p>
+  <button class="primary" onclick="rescueBoyfriend()">
+    남자친구 즉시 소환하기 🚀
+  </button>
+  <div id="rescueResult" class="result hidden"></div>
+</div>
+
+<div class="card center">
+  <div class="emoji">💌</div>
+  <div class="card-title">남친이 보내는 편지</div>
+  <p style="line-height:2;font-size:14px">
+    오늘도 하루 버텨내느라 너무 수고 많았어.<br>
+    세상에서 네가 제일 소중하고 귀여운 거 알지?<br>
+    이따 만날 때 맛있는 거 잔뜩 먹자. 사랑해 ❤️
+  </p>
+  <div class="stamp">남친 사랑 독점 허가증</div>
+  <p style="font-size:12px;color:var(--muted)">
+    발행인 : 세상에서 너를 제일 좋아하는 남자친구
+  </p>
+</div>
+
+<footer>
+  여친 바보 남친 공단 · 제1조 여보의 미소는 세계 최고의 자산이다.<br>
+  본 공단은 365일 24시간 여친 한정 무상 서비스 제공 중.<br>
+  © 2026 세상에서 여친을 가장 사랑하는 사람
+</footer>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+let hearts = 1004000;
+
+const sweetWords = [
+"오늘 누가 우리 여보 힘들게 했어? 이름 대, 오빠가 가만 안 둘 거야 😤 (근데 일단 우리 여보 입부터 뽀뽀 츄)",
+"세상에 예쁜 사람이 그렇게 많다는데, 내 눈엔 우리 여보밖에 안 보여서 큰일이다 진짜.",
+"힘들 땐 다른 거 생각하지 말고 내 품에 쏙 안겨있어. 다 막아줄 테니까.",
+"오늘 하루도 버텨줘서 고마워. 우리 여보는 존재 자체만으로도 내겐 기적이야 ❤️",
+"이따 맛있는 거 뭐 먹고 싶어? 닭발? 마라탕? 아니면 오빠 특제 품에 안기기?",
+"피곤하면 오늘 아무것도 하지 마. 설거지도 청소도 다 내가 할 테니까 여보는 누워만 있어!",
+"너처럼 귀엽고 사랑스러운 사람이 내 여자친구라는 건 진짜 전생에 나라를 구한 게 분명해.",
+"속상한 거 있으면 다 나한테 털어놔. 내가 귀에 피가 나도록 다 들어줄게!"
+];
+
+const apologyMessages = [
+"죄송합니다! 무조건 제가 잘못했습니다!\n여보 눈에 눈물 나게 한 사람 = 전생의 지구를 파괴한 나\n용서해 줄 때까지 무릎 꿇고 귀여운 표정 지을게요 🥺",
+"잘못했어요! 우리 여보가 화났다면 하늘이 두 쪽 난 것보다 더 심각한 일입니다.\n당장 맛있는 디저트 대령하고 엉덩이 춤이라도 출게요!",
+"제 눈이 삐었습니다! 어떻게 우리 소중한 여보 마음을 몰라줬을까요...\n지금 당장 백번 고백하고 평생 안아주기 형벌을 받겠습니다 ❤️",
+"공식 사과문 :\n1. 제가 덜렁댔습니다.\n2. 우리 여보는 언제나 옳습니다.\n3. 앞으로 더 잘하겠습니다. 충성! 🫡"
+];
+
+const serviceTexts = {
+'massage': '💆 <b>특급 마사지 서비스 개시!</b><br><br>어깨 꾹꾹이 100회 예약 완료!<br>딱딱하게 뭉친 피로가 사르르 녹아내리도록 남친의 마법 손길이 출동합니다. 눈 감고 편하게 기대 있어 ❤️',
+'listen': '🗣️ <b>대나무숲 서비스 개시!</b><br><br>자, 지금부터 오빠는 귀가 쫑긋한 토끼가 됩니다.<br>오늘 회사에서, 친구 관계에서, 혹은 그냥 기분 나빴던 일 전부 다 말해봐. "헐", "진짜?", "우리 여보가 너무 고생했네" 시전 준비 완료!'
+};
+
+function toast(msg){
+ const t=document.getElementById('toast');
+ t.innerText=msg;
+ t.classList.add('show');
+ setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+function randomSweetWord(){
+ const r=document.getElementById('sweetResult');
+ r.classList.remove('hidden');
+ r.innerHTML='💌 <b>남친의 꿀 뚝뚝 멘트 :</b><br><br>' + sweetWords[Math.floor(Math.random()*sweetWords.length)];
+ toast('심쿵 멘트 장전 완료! ❤️');
+}
+
+function requestService(type){
+ const r=document.getElementById('serviceResult');
+ r.classList.remove('hidden');
+ r.innerHTML=serviceTexts[type];
+ toast('신청 완료! 잠시 후 남친이 달려갑니다.');
+}
+
+function generateApology(){
+ const r=document.getElementById('apologyResult');
+ r.classList.remove('hidden');
+ r.innerHTML='<div class="stamp">무조건 사과 승인</div><br>'+apologyMessages[Math.floor(Math.random()*apologyMessages.length)];
+ toast('남친의 즉석 사과문 제출 완료 🙇‍♂️');
+}
+
+function addHeart(){
+ hearts += Math.floor(Math.random()*520000 + 131400);
+ document.getElementById('heartCount').innerText = hearts.toLocaleString() + '개';
+ toast('사랑이 성공적으로 입금되었습니다 ❤️ (+무한 복리)');
+}
+
+function rescueBoyfriend(){
+ const r=document.getElementById('rescueResult');
+ r.classList.remove('hidden');
+ r.innerHTML=
+ '<div style="font-size:32px;text-align:center">🚀🏃‍♂️💨</div>'+
+ '<b>특급 남친 구조대 현장 도착!</b><br><br>'+
+ '여보세요? 거기 우리 세상에서 제일 예쁘고 귀여운 여친 힘들어한다는 소식 듣고 순간이동으로 날아왔습니다!<br><br>'+
+ '<b>[즉시 실행 메뉴]</b><br>'+
+ '① 따뜻한 품에 꼬옥 껴안아 주기 (30분 지속)<br>'+
+ '② 머리 쓰다듬으며 "우리 여보 최고야" 100번 말해주기<br>'+
+ '③ 맛있는 야식 및 디저트 무제한 배달<br><br>'+
+ '<div style="text-align:center;color:#ff6b9d;font-size:18px;font-family:Jua">'+
+ '오늘도 내 옆에 있어줘서 고마워 사랑해 ❤️</div>';
+ toast('남친 소환 성공! 5분 뒤에 봅니다 🏃‍♂️');
+}
+</script>
+</body>
+</html>
