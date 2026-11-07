@@ -127,6 +127,10 @@ h1 span{color:var(--pink)}
   color:var(--pink);
 }
 
+button, input, textarea {
+  font-family:'Gowun Dodum',sans-serif;
+}
+
 button {
   border:0;
   cursor:pointer;
@@ -345,13 +349,37 @@ footer {
 
 <div class="card">
   <div class="card-title">🚨 긴급 남친 소환 버튼</div>
-  <p style="color:var(--muted);font-size:13px;line-height:1.8">
+  <p style="color:var(--muted);font-size:14px;line-height:1.8">
     지금 당장 남친 얼굴이 보이고 싶거나 품에 안기고 싶을 때 누르세요.
   </p>
   <button class="primary" onclick="rescueBoyfriend()">
     남자친구 즉시 소환하기 🚀
   </button>
   <div id="rescueResult" class="result hidden"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">💌 남친 공단 공식 제휴 문의</div>
+  <p style="color:var(--muted);font-size:14px;line-height:1.8">
+    남친 공단과 특별한 협업을 원하시거나 건의사항이 있으신가요? 아래 폼을 통해 간편하게 접수해 주세요!
+  </p>
+  <form action="https://formspree.io/f/your_form_id" method="POST" style="margin-top:15px;" onsubmit="handleFormSubmit(event)">
+    <div style="margin-bottom:12px;">
+      <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px;">성함 / 브랜드명</label>
+      <input type="text" name="name" placeholder="성함 또는 브랜드명 입력" required style="width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--card-border);background:var(--result-bg);color:var(--text-main);font-size:14px;">
+    </div>
+    <div style="margin-bottom:12px;">
+      <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px;">답변 받을 이메일</label>
+      <input type="email" name="email" placeholder="example@email.com" required style="width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--card-border);background:var(--result-bg);color:var(--text-main);font-size:14px;">
+    </div>
+    <div style="margin-bottom:16px;">
+      <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px;">제휴 및 문의 내용</label>
+      <textarea name="message" rows="4" placeholder="제휴 제안이나 하고 싶은 말씀을 적어주세요 ❤️" required style="width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--card-border);background:var(--result-bg);color:var(--text-main);font-size:14px;resize:vertical;"></textarea>
+    </div>
+    <button type="submit" class="primary">
+      제휴 문의 접수하기 🚀
+    </button>
+  </form>
 </div>
 
 <div class="card center">
@@ -452,6 +480,17 @@ function rescueBoyfriend(){
  '<div style="text-align:center;color:#ff6b9d;font-size:18px;font-family:Jua">'+
  '오늘도 내 옆에 있어줘서 고마워 사랑해 ❤️</div>';
  toast('남친 소환 성공! 5분 뒤에 봅니다 🏃‍♂️');
+}
+
+function handleFormSubmit(e) {
+  const form = e.target;
+  if(form.action.includes('your_form_id')) {
+    e.preventDefault();
+    alert('Formspree Form ID를 설정해주세요!\n(HTML 내 action="https://formspree.io/f/your_form_id" 부분을 본인의 Formspree ID로 변경해주세요)');
+    toast('Formspree ID 설정이 필요합니다!');
+    return;
+  }
+  toast('제휴 문의가 성공적으로 접수되었습니다! 💌');
 }
 
 // Theme Toggle logic
