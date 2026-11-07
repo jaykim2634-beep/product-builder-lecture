@@ -3,37 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OurMoment | 커플 스마트 디데이, 데이트 정산 및 관계 심리 가이드</title>
-<meta name="description" content="커플들을 위한 필수 유틸리티! 디데이 계산기, 데이트 비용 정산, 함께 만드는 버킷리스트, 그리고 건강한 연애를 위한 심리학 가이드를 제공합니다.">
+<title>싸이월드와 버디버디 - 2000년대 한국 인터넷 문화 박물관 & 추억 아카이브</title>
+<meta name="description" content="2000년대 한국 인터넷 황금기를 추억하는 온라인 박물관! 버디버디, 싸이월드 미니홈피, 추억의 유행어, 폴더폰 도감, 그리고 세대별 추억 테스트를 즐겨보세요.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Outfit:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=VT323&display=swap');
 
 :root {
-  --bg: #121017;
-  --surface: #1e1a29;
-  --surface-hover: #2a2438;
-  --border: #ffffff1a;
+  --bg: #0d0b16;
+  --surface: #191428;
+  --surface-hover: #241d3a;
+  --border: #ff6b9d33;
   --text-main: #fff5f8;
   --text-muted: #b3a6b8;
   --pink: #ff6b9d;
-  --pink-light: #ff9ec0;
+  --cyan: #00f0ff;
   --yellow: #ffd166;
-  --accent: #ff477e;
-  --result-bg: #171421;
+  --result-bg: #13101f;
 }
 
 body.light-mode {
-  --bg: #fff5f8;
+  --bg: #f8f6fc;
   --surface: #ffffff;
-  --surface-hover: #fff0f3;
-  --border: #ffb6c166;
-  --text-main: #3d2030;
-  --text-muted: #856675;
-  --pink: #e05587;
-  --pink-light: #ff6b9d;
-  --yellow: #f59e0b;
-  --accent: #e11d48;
-  --result-bg: #ffeaf0;
+  --surface-hover: #f0ecfa;
+  --border: #d8cce8;
+  --text-main: #251d38;
+  --text-muted: #6e6080;
+  --pink: #e04a7d;
+  --cyan: #0284c7;
+  --yellow: #d97706;
+  --result-bg: #f3effc;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,7 +46,7 @@ body {
   transition: background 0.4s, color 0.4s;
 }
 
-.wrap { max-width: 900px; margin: auto; }
+.wrap { max-width: 960px; margin: auto; }
 
 /* Navbar */
 nav {
@@ -60,26 +58,29 @@ nav {
   border: 1px solid var(--border);
   border-radius: 20px;
   margin-bottom: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .logo {
-  font-family: 'Jua', sans-serif;
-  font-size: 22px;
-  color: var(--pink);
+  font-family: 'VT323', monospace;
+  font-size: 28px;
+  color: var(--cyan);
   text-decoration: none;
+  letter-spacing: 2px;
 }
 
 .nav-links {
   display: flex;
   gap: 16px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 14px;
+  font-family: 'Jua';
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--pink); }
@@ -102,19 +103,20 @@ header {
 
 .tag {
   display: inline-block;
-  border: 1px solid var(--pink);
-  color: var(--pink);
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
   padding: 6px 18px;
   border-radius: 30px;
   font-size: 13px;
-  background: rgba(255, 107, 157, 0.1);
+  background: rgba(0, 240, 255, 0.08);
   margin-bottom: 15px;
-  font-family: 'Jua';
+  font-family: 'VT323';
+  letter-spacing: 1px;
 }
 
 h1 {
   font-family: 'Jua', sans-serif;
-  font-size: clamp(32px, 6vw, 48px);
+  font-size: clamp(30px, 6vw, 46px);
   line-height: 1.3;
   margin-bottom: 12px;
 }
@@ -132,47 +134,45 @@ h1 span { color: var(--pink); }
   border-radius: 24px;
   padding: 28px;
   margin: 24px 0;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
 .card-title {
   font-family: 'Jua';
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 16px;
   color: var(--text-main);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-/* Utility Tool 1: D-Day */
-.dday-display {
-  text-align: center;
-  padding: 20px;
+/* Feature 1: Birth Year Chronicle */
+.chronicle-box {
   background: var(--result-bg);
-  border-radius: 16px;
   border: 1px dashed var(--pink);
-  margin-bottom: 20px;
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 20px;
 }
-.dday-number {
-  font-family: 'Jua';
-  font-size: 42px;
-  color: var(--pink);
-  margin: 10px 0;
-}
-.input-group {
+.chronicle-timeline {
   display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 15px;
 }
-.input-group label {
+.timeline-item {
+  background: var(--surface);
+  border-left: 4px solid var(--pink);
+  padding: 14px 18px;
+  border-radius: 0 12px 12px 0;
   font-size: 14px;
-  color: var(--text-muted);
-  font-family: 'Jua';
 }
-.input-field {
-  flex: 1;
+.timeline-item b { color: var(--cyan); font-family: 'Jua'; font-size: 16px; }
+
+/* Feature 2: Slang Dictionary */
+.search-input {
+  width: 100%;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -180,55 +180,85 @@ h1 span { color: var(--pink); }
   color: var(--text-main);
   font-family: 'Gowun Dodum';
   font-size: 15px;
+  margin-bottom: 16px;
 }
-
-/* Utility Tool 2: Expense Splitter */
-.split-grid {
+.slang-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
-  margin-bottom: 16px;
 }
-@media(max-width: 600px) { .split-grid { grid-template-columns: 1fr; } }
-
-.result-box {
+.slang-card {
   background: var(--result-bg);
-  padding: 16px;
-  border-radius: 14px;
-  font-size: 14px;
-  line-height: 1.8;
-  margin-top: 14px;
-}
-
-/* Utility Tool 3: Bucket List */
-.bucket-input-wrap {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-.bucket-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.bucket-item {
-  background: var(--result-bg);
-  padding: 12px 16px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
   border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
 }
-.bucket-item.completed span {
-  text-decoration: line-through;
+.slang-word {
+  font-family: 'Jua';
+  font-size: 18px;
+  color: var(--pink);
+  margin-bottom: 6px;
+}
+.slang-desc {
+  font-size: 14px;
   color: var(--text-muted);
 }
-.bucket-btns { display: flex; gap: 8px; }
 
-/* Buttons */
+/* Feature 3: Retro Phones */
+.phone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.phone-card {
+  background: var(--result-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+.phone-title {
+  font-family: 'Jua';
+  font-size: 18px;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+.phone-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Feature 4: Memory Quiz */
+.quiz-box {
+  background: var(--result-bg);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 15px;
+}
+.quiz-question {
+  font-family: 'Jua';
+  font-size: 17px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.quiz-option {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.quiz-option:hover { border-color: var(--pink); background: var(--surface-hover); }
+
+/* Buttons & Inputs */
 button {
   border: 0;
   cursor: pointer;
@@ -242,8 +272,8 @@ button:hover { transform: translateY(-2px); filter: brightness(1.1); }
 button:active { transform: scale(0.97); }
 
 .primary-btn {
-  background: linear-gradient(135deg, var(--pink), var(--pink-light));
-  color: #24121d;
+  background: linear-gradient(135deg, var(--pink), var(--yellow));
+  color: #121017;
   width: 100%;
   box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
 }
@@ -254,26 +284,22 @@ button:active { transform: scale(0.97); }
   border: 1px solid var(--border);
 }
 
-/* Articles */
-.article-content {
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--text-muted);
-}
-.article-content h3 {
-  font-family: 'Jua';
-  font-size: 18px;
-  color: var(--pink);
-  margin: 18px 0 8px;
-}
-.article-content p { margin-bottom: 14px; }
-
 /* Contact Form */
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
   margin-top: 14px;
+}
+.input-field {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text-main);
+  font-family: 'Gowun Dodum';
+  font-size: 15px;
 }
 
 /* Toast */
@@ -282,8 +308,8 @@ button:active { transform: scale(0.97); }
   bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--pink);
-  color: #24121d;
+  background: var(--cyan);
+  color: #0d0b16;
   font-family: 'Jua';
   padding: 12px 22px;
   border-radius: 30px;
@@ -291,7 +317,7 @@ button:active { transform: scale(0.97); }
   pointer-events: none;
   transition: .3s;
   z-index: 100;
-  box-shadow: 0 10px 30px rgba(255,107,157,0.4);
+  box-shadow: 0 10px 30px rgba(0,240,255,0.4);
 }
 #toast.show { opacity: 1; }
 
@@ -311,120 +337,105 @@ footer {
 <div class="wrap">
 
   <nav>
-    <a href="#" class="logo">❤️ OurMoment</a>
+    <a href="#" class="logo">MEMORIES.2000</a>
     <div class="nav-links">
-      <a href="#dday">디데이</a>
-      <a href="#split">정산</a>
-      <a href="#bucket">버킷리스트</a>
-      <a href="#guide">연애가이드</a>
-      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙 다크 모드</button>
+      <a href="#chronicle">연대기</a>
+      <a href="#slang">유행어사전</a>
+      <a href="#phones">휴대폰도감</a>
+      <a href="#quiz">추억퀴즈</a>
+      <a href="#contact">제휴문의</a>
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙 테마 전환</button>
     </div>
   </nav>
 
   <header>
-    <div class="tag">COUPLE SMART UTILITY & WELLNESS HUB 💕</div>
-    <h1>우리만의 특별한 순간<br><span>OurMoment 커플 허브</span></h1>
+    <div class="tag">KOREAN INTERNET CULTURE MUSEUM 🏛️</div>
+    <h1>2000년대 한국 인터넷 문화 박물관<br><span>그 시절 우리가 사랑했던 추억 아카이브</span></h1>
     <div class="sub">
-      기념일 계산부터 데이트 비용 공정 정산, 함께 이루는 버킷리스트, 그리고 건강한 관계를 위한 심리 가이드까지 제공합니다.
+      버디버디, 싸이월드, 추억의 유행어와 폴더폰까지! 대한민국 인터넷 황금기를 되짚어보는 감성 아카이브입니다.
     </div>
   </header>
 
-  <!-- Tool 1: D-Day Calculator -->
-  <div class="card" id="dday">
-    <div class="card-title">📅 커플 디데이 & 기념일 계산기</div>
-    <div class="dday-display">
-      <div style="font-size: 14px; color: var(--text-muted);">사귄 지 만난 지</div>
-      <div class="dday-number" id="ddayResult">D+1</div>
-      <div id="anniversaryList" style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">주요 기념일 계산 중...</div>
-    </div>
-    <div class="input-group">
-      <label>처음 만난(사귄) 날짜:</label>
-      <input type="date" id="startDateInput" class="input-field" onchange="calculateDday()">
-    </div>
-  </div>
-
-  <!-- Tool 2: Date Expense Splitter -->
-  <div class="card" id="split">
-    <div class="card-title">💰 스마트 데이트 비용 정산기</div>
+  <!-- Feature 1: Internet Memory Chronicle -->
+  <div class="card" id="chronicle">
+    <div class="card-title">⏳ 나의 인터넷 추억 연대기 생성기</div>
     <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
-      오늘 데이트에 사용한 총비용을 입력하고 두 사람이 공정하게 나누어 계산해 보세요!
+      태어난 연도를 입력하면, 학창 시절을 관통했던 전설의 인터넷 문화와 유행을 한눈에 보여드립니다!
     </p>
-    <div class="split-grid">
-      <div class="input-group" style="flex-direction: column; align-items: flex-start;">
-        <label>오늘 총 데이트 비용 (원)</label>
-        <input type="number" id="totalExpense" class="input-field" placeholder="예: 75000" style="width: 100%;">
-      </div>
-      <div class="input-group" style="flex-direction: column; align-items: flex-start;">
-        <label>나눈 기준</label>
-        <select id="splitRatio" class="input-field" style="width: 100%;">
-          <option value="0.5">50 : 50 정확히 반반</option>
-          <option value="0.6">60 : 40 (내가 조금 더)</option>
-          <option value="0.4">40 : 60 (상대가 조금 더)</option>
-        </select>
-      </div>
+    <div style="display: flex; gap: 10px; margin-bottom: 14px;">
+      <input type="number" id="birthYearInput" class="input-field" placeholder="예: 1995" min="1970" max="2010" value="1995">
+      <button class="primary-btn" onclick="generateChronicle()" style="width: auto; white-space: nowrap;">연대기 조회 🚀</button>
     </div>
-    <button class="primary-btn" onclick="calculateSplit()" style="margin-top: 10px;">정산 금액 계산하기 💸</button>
-    <div id="splitResult" class="result box hidden" style="display:none;"></div>
+    <div id="chronicleResult" class="chronicle-box hidden" style="display:none;"></div>
   </div>
 
-  <!-- Tool 3: Shared Bucket List -->
-  <div class="card" id="bucket">
-    <div class="card-title">✨ 커플 함께 이루는 버킷리스트</div>
+  <!-- Feature 2: Retro Slang Dictionary -->
+  <div class="card" id="slang">
+    <div class="card-title">📖 추억의 2000년대 유행어 사전</div>
+    <input type="text" id="slangSearch" class="search-input" placeholder="검색할 유행어를 입력하세요 (예: 방가방가, 얼짱, 뷁...)" oninput="filterSlangs()">
+    <div class="slang-grid" id="slangGrid">
+      <!-- Slang items rendered by JS -->
+    </div>
+  </div>
+
+  <!-- Feature 3: Retro Phone Museum -->
+  <div class="card" id="phones">
+    <div class="card-title">📱 추억의 레트로 휴대폰 도감</div>
     <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
-      앞으로 함께 하고 싶은 데이트나 여행 계획을 등록하고 체크해 보세요! (브라우저에 자동 저장됩니다)
+      벨소리 다운로드와 컬러링, 폴더를 닫을 때의 찰칵 소리가 그리워지는 전설의 명기들입니다.
     </p>
-    <div class="bucket-input-wrap">
-      <input type="text" id="bucketInput" class="input-field" placeholder="예: 제주도 일몰 보면서 흑돼지 먹기">
-      <button class="secondary-btn" onclick="addBucketItem()" style="white-space: nowrap;">추가하기 ➕</button>
+    <div class="phone-grid">
+      <div class="phone-card">
+        <div class="phone-title">📞 삼성 애니콜 폴더폰</div>
+        <div class="phone-desc">"한국인은 안~니꼴!" 듀얼 스크린과 짜릿한 폴더 여닫는 손맛의 대명사.</div>
+      </div>
+      <div class="phone-card">
+        <div class="phone-title">📱 LG CYON 스키니</div>
+        <div class="phone-desc">초콜릿폰과 샤인폰 열풍! 당시 휴대폰 두께 경쟁에 불을 지핀 슬림 디자인.</div>
+      </div>
+      <div class="phone-card">
+        <div class="phone-title">✨ SKY IM-7200 (환상링)</div>
+        <div class="phone-desc">"It's Different." 세련된 디자인과 독보적인 벨소리/폰트로 학생들의 로망.</div>
+      </div>
+      <div class="phone-card">
+        <div class="phone-title">🔮 모토로라 RAZR (레이저)</div>
+        <div class="phone-desc">면도날처럼 얇은 두께와 메탈릭 키패드로 전 세계를 매혹시킨 메가 히트작.</div>
+      </div>
     </div>
-    <ul class="bucket-list" id="bucketList"></ul>
   </div>
 
-  <!-- Article 1: Relationship Guide -->
-  <article class="card" id="guide">
-    <div class="card-title">📖 장기 연애를 유지하는 커플들의 5가지 핵심 소통 습관</div>
-    <div class="article-content">
-      <p>오랫동안 서로를 존중하며 예쁜 사랑을 이어가는 커플들에게는 공통적인 소통 습관이 존재합니다. 시간이 흐를수록 익숙함에 속아 서로에게 소홀해지기 쉽지만, 작은 노력들이 모여 관계의 깊이를 결정합니다.</p>
-      
-      <h3>1. 매일 하루의 일상과 감정 솔직하게 공유하기</h3>
-      <p>단순히 "밥 뭐 먹었어?" 식의 대화를 넘어, 오늘 하루 어떤 감정을 느꼈고 어떤 일이 힘들었는지 진솔하게 나누는 시간이 필요합니다. 상대방의 하루에 온전히 귀 기울여주는 것만으로도 정서적 유대감이 크게 향상됩니다.</p>
-
-      <h3>2. 갈등 발생 시 감정적 대응 자제하고 타임아웃 갖기</h3>
-      <p>싸움이 격화될 때는 감정에 휩쓸려 상처 주는 말을 하기 쉽습니다. 감정이 격해질 때는 잠시 대화를 멈추고(타임아웃), 마음을 진정한 뒤 차분하게 대화를 재개하는 것이 현명합니다.</p>
-
-      <h3>3. 사소한 일에도 당연하게 여기지 않고 고마움 표현하기</h3>
-      <p>"고마워", "사랑해"라는 표현은 해도해도 지나치지 않습니다. 당연한 일로 여기지 않고 작은 배려에도 진심으로 고마움을 표현하는 커플이 오래도록 서로를 아껴줍니다.</p>
+  <!-- Feature 4: Generation Memory Quiz -->
+  <div class="card" id="quiz">
+    <div class="card-title">🎯 세대별 추억의 인터넷 고고학 퀴즈</div>
+    <div class="quiz-box" id="quizContainer">
+      <div class="quiz-question" id="quizQ">Q1. 버디버디 로그인 시 친구들에게 상태를 알리던 이 기능의 이름은?</div>
+      <div class="quiz-options" id="quizOptions">
+        <!-- Options rendered by JS -->
+      </div>
+      <button class="primary-btn" id="quizNextBtn" onclick="nextQuiz()" style="display:none;">다음 문제 ➡️</button>
+      <div id="quizScoreResult" style="font-family: 'Jua'; font-size: 18px; color: var(--cyan); text-align: center; margin-top: 15px;"></div>
     </div>
-  </article>
+  </div>
 
   <!-- Contact Form -->
   <div class="card" id="contact">
-    <div class="card-title">📬 공식 제휴 및 문의 접수처</div>
+    <div class="card-title">📬 아카이브 제휴 및 자료 기증 문의</div>
     <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 14px;">
-      OurMoment 플랫폼과 협업을 원하시거나 브랜드 제휴 문의가 있으신가요? 아래 폼으로 접수해 주세요!
+      박물관에 추가하고 싶은 추억의 자료가 있거나 제휴 제안이 있으신가요? 아래 폼으로 접수해 주세요!
     </p>
     <form action="https://formspree.io/f/mnppyzzn" method="POST" class="contact-form" onsubmit="handleFormSubmit(event)">
-      <div class="input-group" style="flex-direction: column; align-items: flex-start;">
-        <label>성함 또는 브랜드명</label>
-        <input type="text" name="name" class="input-field" placeholder="이름 또는 브랜드명" required style="width: 100%;">
-      </div>
-      <div class="input-group" style="flex-direction: column; align-items: flex-start;">
-        <label>답변 받을 이메일</label>
-        <input type="email" name="email" class="input-field" placeholder="example@email.com" required style="width: 100%;">
-      </div>
-      <div class="input-group" style="flex-direction: column; align-items: flex-start;">
-        <label>문의 내용</label>
-        <textarea name="message" class="input-field" rows="4" placeholder="제휴 내용이나 건의사항을 적어주세요 ❤️" required style="width: 100%; resize: vertical;"></textarea>
-      </div>
-      <button type="primary-btn" class="primary-btn" style="margin-top: 10px;">제휴 문의 접수하기 🚀</button>
+      <input type="text" name="name" class="input-field" placeholder="성함 또는 닉네임" required>
+      <input type="email" name="email" class="input-field" placeholder="이메일 주소 (example@email.com)" required>
+      <textarea name="message" class="input-field" rows="4" placeholder="추억의 자료 제보나 제휴 내용을 적어주세요 ✨" required style="resize: vertical;"></textarea>
+      <button type="submit" class="primary-btn">제보 및 문의 접수하기 🚀</button>
     </form>
   </div>
 
   <!-- Disqus Comments -->
   <div class="card">
-    <div class="card-title">💬 커플 소통 및 방명록 커뮤니티</div>
+    <div class="card-title">💬 추억 공유 및 방문자 방명록</div>
     <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
-      우리 커플의 자랑이나 고민, 혹은 방문 소감을 자유롭게 남겨보세요! ❤️
+      그 시절 나만의 추억이나 감상을 자유롭게 남겨보세요! ❤️
     </p>
     <div id="disqus_thread"></div>
     <script>
@@ -439,9 +450,9 @@ footer {
   </div>
 
   <footer>
-    OurMoment · 커플 스마트 유틸리티 & 웰니스 플랫폼<br>
-    본 사이트는 Google 애드센스 품질 가이드라인을 엄격히 준수합니다.<br>
-    © 2026 OurMoment. All rights reserved.
+    2000년대 한국 인터넷 문화 박물관 · 추억 아카이브<br>
+    본 사이트는 Google 애드센스 품질 가이드라인(독창적 콘텐츠 및 인터랙티브 기능)을 준수합니다.<br>
+    © 2026 Memories.2000 Museum. All rights reserved.
   </footer>
 
 </div>
@@ -456,132 +467,140 @@ function toast(msg) {
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-// D-Day Calculator
-window.addEventListener('DOMContentLoaded', () => {
-  const savedDate = localStorage.getItem('coupleStartDate');
-  if (savedDate) {
-    document.getElementById('startDateInput').value = savedDate;
-    calculateDday(savedDate);
-  } else {
-    // Default 100 days ago
-    const defaultDate = new Date();
-    defaultDate.setDate(defaultDate.getDate() - 100);
-    const dateStr = defaultDate.toISOString().split('T')[0];
-    document.getElementById('startDateInput').value = dateStr;
-    calculateDday(dateStr);
-  }
-  loadBucketList();
-});
-
-function calculateDday(customDate) {
-  const dateVal = customDate || document.getElementById('startDateInput').value;
-  if (!dateVal) return;
-  localStorage.setItem('coupleStartDate', dateVal);
+// 1. Internet Memory Chronicle Generator
+function generateChronicle() {
+  const year = parseInt(document.getElementById('birthYearInput').value);
+  const resBox = document.getElementById('chronicleResult');
   
-  const start = new Date(dateVal);
-  const today = new Date();
-  const diffTime = today - start;
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
-  
-  document.getElementById('ddayResult').innerText = `D + ${diffDays}일`;
-  
-  // Anniversaries
-  const ann100 = new Date(start); ann100.setDate(start.getDate() + 99);
-  const ann365 = new Date(start); ann365.setDate(start.getDate() + 364);
-  const ann500 = new Date(start); ann500.setDate(start.getDate() + 499);
-  const ann1000 = new Date(start); ann1000.setDate(start.getDate() + 999);
-  
-  document.getElementById('anniversaryList').innerHTML = `
-    ✨ 100일: ${ann100.toLocaleDateString()} | 
-    🎉 1주년: ${ann365.toLocaleDateString()} | 
-    💖 500일: ${ann500.toLocaleDateString()} | 
-    🌟 1000일: ${ann1000.toLocaleDateString()}
-  `;
-}
-
-// Expense Splitter
-function calculateSplit() {
-  const total = parseFloat(document.getElementById('totalExpense').value);
-  const ratio = parseFloat(document.getElementById('splitRatio').value);
-  const resDiv = document.getElementById('splitResult');
-  
-  if (isNaN(total) || total <= 0) {
-    toast('올바른 총 데이트 비용을 입력해주세요!');
+  if (isNaN(year) || year < 1970 || year-0 > 2010) {
+    toast('1970년에서 2010년 사이의 연도를 입력해주세요!');
     return;
   }
   
-  const myShare = Math.round(total * ratio);
-  const partnerShare = total - myShare;
+  const elemStartYear = year + 8;
+  const midStartYear = year + 14;
+  const highStartYear = year + 17;
   
-  resDiv.style.display = 'block';
-  resDiv.innerHTML = `
-    <b>💳 데이트 비용 정산 결과</b><br>
-    • 총 비용: <b>${total.toLocaleString()}원</b><br>
-    • 내가 부담할 금액 (${ratio * 100}%): <b style="color:var(--pink);">${myShare.toLocaleString()}원</b><br>
-    • 상대방이 부담할 금액 (${(1-ratio) * 100}%): <b style="color:var(--pink);">${partnerShare.toLocaleString()}원</b>
+  resBox.style.display = 'block';
+  resBox.innerHTML = `
+    <h3 style="font-family:'Jua'; color:var(--pink); font-size:18px; margin-bottom:10px;">✨ ${year}년생의 인터넷 연대기 분석 결과</h3>
+    <div class="chronicle-timeline">
+      <div class="timeline-item">
+        <b>초등학생 시절 (~${elemStartYear + 5}년경):</b> 쥬니버네이버, 플래시 게임(뿌뿌게임즈), 크레이지 아케이드, 파니룸
+      </div>
+      <div class="timeline-item">
+        <b>중학생 시절 (${midStartYear}~${midStartYear + 2}년경):</b> 버디버디 (즐톡, 오목), 싸이월드 미니홈피 (일촌평, BGM), 세이클럽
+      </div>
+      <div class="timeline-item">
+        <b>고등학생 시절 (${highStartYear}년~):</b> 스마트폰 대중화, 카카오톡 무료 문자, 페이스북 및 인스타그램 시작
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:16px; font-family:'Jua'; color:var(--cyan); font-size:17px;">
+      "당신은 싸이월드 미니홈피 BGM과 버디버디 파도타기의 감성을 기억하는 세대입니다."
+    </div>
   `;
-  toast('정산이 완료되었습니다! 💸');
+  toast('인터넷 연대기가 생성되었습니다! 🚀');
 }
 
-// Bucket List logic
-let bucketItems = JSON.parse(localStorage.getItem('coupleBuckets')) || [
-  { text: '제주도 일몰 보면서 흑돼지 먹기', completed: true },
-  { text: '커플 공방에서 반지 직접 만들기', completed: false },
-  { text: '글램핑장에서 밤하늘 별 보며 불멍하기', completed: false }
+// 2. Retro Slang Dictionary
+const slangs = [
+  { word: "방가방가", desc: "반갑다는 뜻의 2000년대 초반 대표 인사말. (응용: 즐방가)" },
+  { word: "하이염 / 하이하잉", desc: "인터넷 채팅창에서 주로 쓰이던 귀여운 느낌의 인사." },
+  { word: "얼짱 / 몸짱", desc: "얼굴이 최고로 예쁜 사람과 몸매가 멋진 사람을 일컫는 말." },
+  { word: "뷁", desc: "황당하거나 짜증날 때 쓰던 무표정 이모티콘 겸 감탄사." },
+  { word: "지존", desc: "어떤 분야에서 최고 경지에 오른 사람. (예: 게임 지존)" },
+  { word: "즐", desc: "'즐겨라'의 준말이지만, 실제로는 '꺼져'나 '상대하기 싫다'는 비꼬는 의미로 사용됨." },
+  { word: "엄친아 / 엄친딸", desc: "엄마 친구 아들/딸의 준말로, 공부·외모·능력 모두 완벽한 대상." },
+  { word: "품절남 / 품절녀", desc: "결혼하여 더 이상 시장에 남아있지 않다는 유머러스한 표현." }
 ];
 
-function saveBucketList() {
-  localStorage.setItem('coupleBuckets', JSON.stringify(bucketItems));
-  renderBucketList();
-}
-
-function renderBucketList() {
-  const listEl = document.getElementById('bucketList');
-  listEl.innerHTML = '';
-  if (bucketItems.length === 0) {
-    listEl.innerHTML = '<li style="text-align:center;color:var(--text-muted);padding:10px;">등록된 버킷리스트가 없습니다. 함께 하고픈 소원을 적어보세요!</li>';
-    return;
-  }
-  bucketItems.forEach((item, index) => {
-    const li = document.createElement('li');
-    li.className = `bucket-item ${item.completed ? 'completed' : ''}`;
-    li.innerHTML = `
-      <span>${item.text}</span>
-      <div class="bucket-btns">
-        <button class="secondary-btn" style="padding:6px 10px;font-size:12px;" onclick="toggleBucket(${index})">${item.completed ? '취소' : '완료'}</button>
-        <button class="secondary-btn" style="padding:6px 10px;font-size:12px;color:#ff477e;" onclick="deleteBucket(${index})">삭제</button>
-      </div>
+function renderSlangs(list) {
+  const grid = document.getElementById('slangGrid');
+  grid.innerHTML = '';
+  list.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'slang-card';
+    div.innerHTML = `
+      <div class="slang-word">${item.word}</div>
+      <div class="slang-desc">${item.desc}</div>
     `;
-    listEl.appendChild(li);
+    grid.appendChild(div);
   });
 }
 
-function loadBucketList() {
-  renderBucketList();
+function filterSlangs() {
+  const keyword = document.getElementById('slangSearch').value.toLowerCase();
+  const filtered = slangs.filter(s => s.word.toLowerCase().includes(keyword) || s.desc.toLowerCase().includes(keyword));
+  renderSlangs(filtered);
 }
 
-function addBucketItem() {
-  const input = document.getElementById('bucketInput');
-  const text = input.value.trim();
-  if (!text) {
-    toast('버킷리스트 내용을 입력해주세요!');
-    return;
+// 3. Quiz Logic
+const quizData = [
+  {
+    q: "Q1. 버디버디 로그인 시 친구들에게 상태를 알리던 이 기능의 이름은?",
+    options: ["1. 상태메시지 (대화명)", "2. 트위터리안", "3. 인스타그램 스토리", "4. 카카오톡 프로필"],
+    answer: 0
+  },
+  {
+    q: "Q2. 싸이월드 미니홈피에서 방문자 수를 집계하던 두 가지 지표는?",
+    options: ["1. Like & Share", "2. Today & Total", "3. Hit & View", "4. Visit & Count"],
+    answer: 1
+  },
+  {
+    q: "Q3. 2000년대 초반 대표적인 추억의 플래시 게임 포털은?",
+    options: ["1. 스팀 (Steam)", "2. 쥬니버네이버 & 야후꾸러기", "3. 넷플릭스", "4. 디스코드"],
+    answer: 1
   }
-  bucketItems.push({ text, completed: false });
-  input.value = '';
-  saveBucketList();
-  toast('새로운 버킷리스트가 추가되었습니다 ✨');
+];
+
+let currentQuiz = 0;
+let score = 0;
+
+function loadQuiz() {
+  const qObj = quizData[currentQuiz];
+  document.getElementById('quizQ').innerText = qObj.q;
+  const optEl = document.getElementById('quizOptions');
+  optEl.innerHTML = '';
+  qObj.options.forEach((opt, idx) => {
+    const btn = document.createElement('div');
+    btn.className = 'quiz-option';
+    btn.innerText = opt;
+    btn.onclick = () => checkAnswer(idx);
+    optEl.appendChild(btn);
+  });
+  document.getElementById('quizNextBtn').style.display = 'none';
+  document.getElementById('quizScoreResult').innerText = '';
 }
 
-function toggleBucket(index) {
-  bucketItems[index].completed = !bucketItems[index].completed;
-  saveBucketList();
+function checkAnswer(selected) {
+  const qObj = quizData[currentQuiz];
+  const options = document.querySelectorAll('.quiz-option');
+  options.forEach((opt, idx) => {
+    if (idx === qObj.answer) opt.style.borderColor = '#00f0ff';
+    else if (idx === selected) opt.style.borderColor = '#ff477e';
+    opt.onclick = null;
+  });
+  
+  if (selected === qObj.answer) {
+    score++;
+    toast('정답입니다! 👏');
+  } else {
+    toast('아쉽네요! 틀렸습니다.');
+  }
+  
+  document.getElementById('quizNextBtn').style.display = 'block';
 }
 
-function deleteBucket(index) {
-  bucketItems.splice(index, 1);
-  saveBucketList();
-  toast('버킷리스트가 삭제되었습니다.');
+function nextQuiz() {
+  currentQuiz++;
+  if (currentQuiz < quizData.length) {
+    loadQuiz();
+  } else {
+    document.getElementById('quizQ').innerText = "🎉 퀴즈 완료!";
+    document.getElementById('quizOptions').innerHTML = '';
+    document.getElementById('quizNextBtn').style.display = 'none';
+    document.getElementById('quizScoreResult').innerText = `총 3문제 중 ${score}문제를 맞히셨습니다! 당신은 인터넷 역사학자 수준이군요 🏆`;
+  }
 }
 
 // Form Submit
@@ -598,7 +617,7 @@ async function handleFormSubmit(e) {
     });
     
     if (response.ok) {
-      toast('제휴 문의가 정상적으로 접수되었습니다! 💌');
+      toast('자료 제보 및 문의가 성공적으로 접수되었습니다! ✨');
       form.reset();
     } else {
       toast('전송 중 문제가 발생했습니다. 다시 시도해 주세요.');
@@ -621,6 +640,8 @@ window.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem('theme') === 'light') {
     document.body.classList.add('light-mode');
   }
+  renderSlangs(slangs);
+  loadQuiz();
 });
 </script>
 </body>
